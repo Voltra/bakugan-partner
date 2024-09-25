@@ -13,10 +13,11 @@ class BakuganPartnerAction
 {
 	public const CALIBRATION_KEY = 239970; //NOTE: DO NOT TOUCH UNDER ANY CIRCUMSTANCES
 
-    public function __invoke(Carbon $birthday): Bakugan {
+	public function __invoke(Carbon $birthday): Bakugan
+	{
 		$randomSeed = $birthday->getTimestampMs() + static::CALIBRATION_KEY;
 
-		return Cache::rememberForever($randomSeed, function() use ($birthday, $randomSeed) {
+		return Cache::rememberForever($randomSeed, function () use ($birthday, $randomSeed) {
 			srand($randomSeed);
 			mt_srand($randomSeed);
 
@@ -25,7 +26,6 @@ class BakuganPartnerAction
 			return $this->pickPartner($birthday, $season, $attribute);
 		});
 	}
-
 
 
 	protected function pickSeason(Carbon $birthday): BakuganSeason
@@ -45,13 +45,11 @@ class BakuganPartnerAction
 		// We do this for two reasons:
 		//  - Attributeless are not in every season
 		//  - Some season might not feature a given attribute from some reason
-		$attributes = spin(
-			fn() => Cache::rememberForever("attributes-for-{$season->name}", fn() => Bakugan::whereSeason($season)
-				->distinct()
-				->pluck('attribute')
-				->sortBy('value')
-				->toArray()),
-		);
+		$attributes = Cache::rememberForever("attributes-for-{$season->name}", fn() => Bakugan::whereSeason($season)
+			->distinct()
+			->pluck('attribute')
+			->sortBy('value')
+			->toArray());
 
 		shuffle($attributes);
 		$attributesCount = count($attributes);
@@ -63,15 +61,13 @@ class BakuganPartnerAction
 
 	protected function pickPartner(Carbon $birthday, BakuganSeason $season, BakuganAttribute $attribute): Bakugan
 	{
-		$bakugans = spin(
-			fn() => Cache::rememberForever(
-				"bakugans-in-{$season->name}-for-{$attribute->name}",
-				fn() => Bakugan::query()
-					->where('season', $season->value)
-					->where('attribute', $attribute->value)
-					->orderBy('name')
-					->getModels(),
-			),
+		$bakugans = Cache::rememberForever(
+			"bakugans-in-{$season->name}-for-{$attribute->name}",
+			fn() => Bakugan::query()
+				->where('season', $season->value)
+				->where('attribute', $attribute->value)
+				->orderBy('name')
+				->getModels(),
 		);
 
 		shuffle($bakugans);
