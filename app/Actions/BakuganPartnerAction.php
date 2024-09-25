@@ -13,7 +13,7 @@ class BakuganPartnerAction
 {
 	public const CALIBRATION_KEY = 239970; //NOTE: DO NOT TOUCH UNDER ANY CIRCUMSTANCES
 
-    public function __invoke(Carbon $birthday) {
+    public function __invoke(Carbon $birthday): Bakugan {
 		$randomSeed = $birthday->getTimestampMs() + static::CALIBRATION_KEY;
 
 		return Cache::rememberForever($randomSeed, function() use ($birthday, $randomSeed) {
