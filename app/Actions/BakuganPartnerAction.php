@@ -34,9 +34,9 @@ class BakuganPartnerAction
 		shuffle($seasons);
 		$seasonsCount = count($seasons);
 
-		$seasonPosition = (($birthday->year + 1) % $seasonsCount) + 1;
+		$seasonIndex = ($birthday->year + 1) % $seasonsCount;
 
-		return $seasons[$seasonPosition - 1];
+		return $seasons[$seasonIndex];
 	}
 
 	protected function pickAttribute(Carbon $birthday, BakuganSeason $season): BakuganAttribute
@@ -54,9 +54,9 @@ class BakuganPartnerAction
 		shuffle($attributes);
 		$attributesCount = count($attributes);
 
-		$attributePosition = (($birthday->month + 1) % $attributesCount) + 1;
+		$attributeIndex = ($birthday->month + 1) % $attributesCount;
 
-		return $attributes[$attributePosition - 1];
+		return $attributes[$attributeIndex];
 	}
 
 	protected function pickPartner(Carbon $birthday, BakuganSeason $season, BakuganAttribute $attribute): Bakugan
@@ -78,8 +78,8 @@ class BakuganPartnerAction
 			return $bakugans[0];
 		}
 
-		$bakuganPosition = (($birthday->day + 1) % $bakugansCount) + 1;
+		$bakuganIndex = ($birthday->day + 1) % $bakugansCount;
 
-		return $bakugans[$bakuganPosition - 1];
+		return $bakugans[$bakuganIndex];
 	}
 }
