@@ -7,7 +7,6 @@ use App\Enums\BakuganSeason;
 use App\Helpers\BakuganHelper;
 use App\Models\Bakugan;
 use Database\Factories\BakuganFactory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class NewVestroiaSeeder extends Seeder
@@ -25,13 +24,13 @@ class NewVestroiaSeeder extends Seeder
         $factory = Bakugan::factory();
 
         /**
-         * @param BakuganAttribute[] $attributes
+         * @param  BakuganAttribute[]  $attributes
          */
-        $register = fn(string $name, array $attributes) => $factory->createMany($bakugan->dataForMany($name, $attributes));
+        $register = fn (string $name, array $attributes) => $factory->createMany($bakugan->dataForMany($name, $attributes));
 
         // cf. https://bakugandb.com/new-vestroia
 
-        $register("Spin Ravenoid", [
+        $register('Spin Ravenoid', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::VENTUS,
@@ -39,7 +38,7 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Neo Dragonoid", [
+        $register('Neo Dragonoid', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -48,14 +47,14 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Cross Dragonoid", [
+        $register('Cross Dragonoid', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::VENTUS,
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Elfin", [
+        $register('Elfin', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -64,14 +63,14 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Minx Elfin", [
+        $register('Minx Elfin', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::VENTUS,
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Nemus", [
+        $register('Nemus', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -80,7 +79,7 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Mega Nemus", [
+        $register('Mega Nemus', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -89,7 +88,7 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Ingram", [
+        $register('Ingram', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -98,45 +97,14 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Master Ingram", [
+        $register('Master Ingram', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::HAOS,
             BakuganAttribute::VENTUS,
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Wilda", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::HAOS,
-            BakuganAttribute::VENTUS,
-            BakuganAttribute::SUBTERRA,
-            BakuganAttribute::DARKUS,
-        ]);
-
-        $register("Thunder Wilda", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::VENTUS,
-            BakuganAttribute::SUBTERRA,
-            BakuganAttribute::DARKUS,
-        ]);
-
-        $register("Percival", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::VENTUS,
-            BakuganAttribute::SUBTERRA,
-            BakuganAttribute::DARKUS,
-        ]);
-
-        $register("Knight Percival", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::SUBTERRA,
-            BakuganAttribute::DARKUS,
-        ]);
-
-        $register("Viper Helios", [
+        $register('Wilda', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -145,7 +113,29 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Cyborg Helios", [
+        $register('Thunder Wilda', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::VENTUS,
+            BakuganAttribute::SUBTERRA,
+            BakuganAttribute::DARKUS,
+        ]);
+
+        $register('Percival', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::VENTUS,
+            BakuganAttribute::SUBTERRA,
+            BakuganAttribute::DARKUS,
+        ]);
+
+        $register('Knight Percival', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::SUBTERRA,
+            BakuganAttribute::DARKUS,
+        ]);
+
+        $register('Viper Helios', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -154,36 +144,7 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Turbine Helios", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::HAOS,
-            BakuganAttribute::VENTUS,
-        ]);
-
-        $register("Helios MKII", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::VENTUS,
-            BakuganAttribute::DARKUS,
-        ]);
-
-        $register("Elico", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::HAOS,
-            BakuganAttribute::SUBTERRA,
-            BakuganAttribute::DARKUS,
-        ]);
-
-        $register("Blast Elico", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::VENTUS,
-            BakuganAttribute::DARKUS,
-        ]);
-
-        $register("Brontes", [
+        $register('Cyborg Helios', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -192,7 +153,36 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Mega Brontes", [
+        $register('Turbine Helios', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::HAOS,
+            BakuganAttribute::VENTUS,
+        ]);
+
+        $register('Helios MKII', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::VENTUS,
+            BakuganAttribute::DARKUS,
+        ]);
+
+        $register('Elico', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::HAOS,
+            BakuganAttribute::SUBTERRA,
+            BakuganAttribute::DARKUS,
+        ]);
+
+        $register('Blast Elico', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::VENTUS,
+            BakuganAttribute::DARKUS,
+        ]);
+
+        $register('Brontes', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -201,7 +191,7 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Alto Brontes", [
+        $register('Mega Brontes', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -210,15 +200,7 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Altair", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::HAOS,
-            BakuganAttribute::VENTUS,
-            BakuganAttribute::DARKUS,
-        ]);
-
-        $register("Wired", [
+        $register('Alto Brontes', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -227,30 +209,15 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Premo Vulcan", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::HAOS,
-            BakuganAttribute::VENTUS,
-            BakuganAttribute::SUBTERRA,
-            BakuganAttribute::DARKUS,
-        ]);
-
-        $register("Hades", [
+        $register('Altair', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
+            BakuganAttribute::HAOS,
             BakuganAttribute::VENTUS,
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Turbine Hades", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::HAOS,
-            BakuganAttribute::SUBTERRA,
-            BakuganAttribute::DARKUS,
-        ]);
-
-        $register("Fencer", [
+        $register('Wired', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -259,41 +226,30 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Leefram", [
-            BakuganAttribute::AQUOS,
+        $register('Premo Vulcan', [
+            BakuganAttribute::PYRUS,
             BakuganAttribute::HAOS,
             BakuganAttribute::VENTUS,
             BakuganAttribute::SUBTERRA,
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Spindle", [
+        $register('Hades', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
-            BakuganAttribute::HAOS,
             BakuganAttribute::VENTUS,
-            BakuganAttribute::SUBTERRA,
+            BakuganAttribute::DARKUS,
         ]);
 
-        $register("Klawgor", [
+        $register('Turbine Hades', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
-            BakuganAttribute::VENTUS,
             BakuganAttribute::SUBTERRA,
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Scraper", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::HAOS,
-            BakuganAttribute::VENTUS,
-            BakuganAttribute::SUBTERRA,
-            BakuganAttribute::DARKUS,
-        ]);
-
-        $register("Foxbat", [
+        $register('Fencer', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -302,24 +258,7 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Abis omega", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::HAOS,
-            BakuganAttribute::VENTUS,
-            BakuganAttribute::SUBTERRA,
-        ]);
-
-        $register("Atmos", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::HAOS,
-            BakuganAttribute::SUBTERRA,
-            BakuganAttribute::DARKUS,
-        ]);
-
-        $register("Freezer", [
-            BakuganAttribute::PYRUS,
+        $register('Leefram', [
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
             BakuganAttribute::VENTUS,
@@ -327,7 +266,15 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Stug", [
+        $register('Spindle', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::HAOS,
+            BakuganAttribute::VENTUS,
+            BakuganAttribute::SUBTERRA,
+        ]);
+
+        $register('Klawgor', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -336,43 +283,7 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Verias", [
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::HAOS,
-            BakuganAttribute::VENTUS,
-        ]);
-
-        $register("Moskeeto", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::HAOS,
-            BakuganAttribute::VENTUS,
-            BakuganAttribute::DARKUS,
-        ]);
-
-        $register("Vandarus", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::VENTUS,
-            BakuganAttribute::SUBTERRA,
-            BakuganAttribute::DARKUS,
-        ]);
-
-        $register("Spin Dragonoid", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::HAOS,
-            BakuganAttribute::SUBTERRA,
-            BakuganAttribute::DARKUS,
-        ]);
-
-        $register("Turbine Dragonoid", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::DARKUS,
-        ]);
-
-        $register("Pyro Dragonoid", [
+        $register('Scraper', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -381,7 +292,7 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Hyper Dragonoid", [
+        $register('Foxbat', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -390,7 +301,23 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Ultra Dragonoid", [
+        $register('Abis omega', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::HAOS,
+            BakuganAttribute::VENTUS,
+            BakuganAttribute::SUBTERRA,
+        ]);
+
+        $register('Atmos', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::HAOS,
+            BakuganAttribute::SUBTERRA,
+            BakuganAttribute::DARKUS,
+        ]);
+
+        $register('Freezer', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -399,7 +326,7 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Dual Elfin", [
+        $register('Stug', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -408,14 +335,43 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Boost Ingram", [
+        $register('Verias', [
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::HAOS,
+            BakuganAttribute::VENTUS,
+        ]);
+
+        $register('Moskeeto', [
             BakuganAttribute::PYRUS,
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::HAOS,
+            BakuganAttribute::VENTUS,
+            BakuganAttribute::DARKUS,
+        ]);
+
+        $register('Vandarus', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::AQUOS,
             BakuganAttribute::VENTUS,
             BakuganAttribute::SUBTERRA,
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Cosmic Ingram", [
+        $register('Spin Dragonoid', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::HAOS,
+            BakuganAttribute::SUBTERRA,
+            BakuganAttribute::DARKUS,
+        ]);
+
+        $register('Turbine Dragonoid', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::DARKUS,
+        ]);
+
+        $register('Pyro Dragonoid', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -424,7 +380,7 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Midnight Percival", [
+        $register('Hyper Dragonoid', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -433,7 +389,7 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Alpha Percival", [
+        $register('Ultra Dragonoid', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -442,21 +398,7 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Orbit Helios", [
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::HAOS,
-            BakuganAttribute::VENTUS,
-            BakuganAttribute::SUBTERRA,
-        ]);
-
-        $register("Mystic Elico", [
-            BakuganAttribute::PYRUS,
-            BakuganAttribute::AQUOS,
-            BakuganAttribute::SUBTERRA,
-            BakuganAttribute::DARKUS,
-        ]);
-
-        $register("Shadow Vulcan", [
+        $register('Dual Elfin', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -465,7 +407,64 @@ class NewVestroiaSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Myriad Hades", [
+        $register('Boost Ingram', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::VENTUS,
+            BakuganAttribute::SUBTERRA,
+            BakuganAttribute::DARKUS,
+        ]);
+
+        $register('Cosmic Ingram', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::HAOS,
+            BakuganAttribute::VENTUS,
+            BakuganAttribute::SUBTERRA,
+            BakuganAttribute::DARKUS,
+        ]);
+
+        $register('Midnight Percival', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::HAOS,
+            BakuganAttribute::VENTUS,
+            BakuganAttribute::SUBTERRA,
+            BakuganAttribute::DARKUS,
+        ]);
+
+        $register('Alpha Percival', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::HAOS,
+            BakuganAttribute::VENTUS,
+            BakuganAttribute::SUBTERRA,
+            BakuganAttribute::DARKUS,
+        ]);
+
+        $register('Orbit Helios', [
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::HAOS,
+            BakuganAttribute::VENTUS,
+            BakuganAttribute::SUBTERRA,
+        ]);
+
+        $register('Mystic Elico', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::SUBTERRA,
+            BakuganAttribute::DARKUS,
+        ]);
+
+        $register('Shadow Vulcan', [
+            BakuganAttribute::PYRUS,
+            BakuganAttribute::AQUOS,
+            BakuganAttribute::HAOS,
+            BakuganAttribute::VENTUS,
+            BakuganAttribute::SUBTERRA,
+            BakuganAttribute::DARKUS,
+        ]);
+
+        $register('Myriad Hades', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,

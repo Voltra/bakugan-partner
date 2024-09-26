@@ -12,7 +12,7 @@
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.1",
         "fakerphp/faker": "^1.23",
-        "laravel/pint": "^1.13",
+        "laravel/pint": "^1.18",
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.0",
@@ -37,6 +37,9 @@
             "@php artisan ide-helper:meta",
             "@php artisan ide-helper:eloquent",
             "@php artisan ide-helper:models -M -R"
+        ],
+        "format": [
+            "./vendor/bin/pint --config ./pint.json"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

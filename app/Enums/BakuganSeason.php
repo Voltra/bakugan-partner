@@ -10,20 +10,22 @@ enum BakuganSeason: int
     case MECHTANIUM_SURGE = 3;
     case BAKUTECH = 5;
 
-    public function label(): string {
-        return match($this) {
-            BakuganSeason::BATTLE_BRAWLERS => "Battle Brawlers",
-            BakuganSeason::NEW_VESTROIA => "New Vestroia",
-            BakuganSeason::GUNDALIAN_INVADERS => "Gundalian Invaders",
-            BakuganSeason::MECHTANIUM_SURGE => "Mechtanium Surge",
-            BakuganSeason::BAKUTECH => "BakuTech",
+    public function label(): string
+    {
+        return match ($this) {
+            BakuganSeason::BATTLE_BRAWLERS => 'Battle Brawlers',
+            BakuganSeason::NEW_VESTROIA => 'New Vestroia',
+            BakuganSeason::GUNDALIAN_INVADERS => 'Gundalian Invaders',
+            BakuganSeason::MECHTANIUM_SURGE => 'Mechtanium Surge',
+            BakuganSeason::BAKUTECH => 'BakuTech',
         };
     }
 
     /**
      * @return int[]
      */
-    public static function values(): array {
-        return array_map(fn(BakuganSeason $case) => $case->value, self::cases());
+    public static function values(): array
+    {
+        return array_map(fn (BakuganSeason $case) => $case->value, self::cases());
     }
 }

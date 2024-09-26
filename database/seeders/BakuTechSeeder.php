@@ -7,7 +7,6 @@ use App\Enums\BakuganSeason;
 use App\Helpers\BakuganHelper;
 use App\Models\Bakugan;
 use Database\Factories\BakuganFactory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class BakuTechSeeder extends Seeder
@@ -25,65 +24,65 @@ class BakuTechSeeder extends Seeder
         $factory = Bakugan::factory();
 
         /**
-         * @param BakuganAttribute[] $attributes
+         * @param  BakuganAttribute[]  $attributes
          */
-        $register = fn(string $name, array $attributes) => $factory->createMany($bakugan->dataForMany($name, $attributes));
+        $register = fn (string $name, array $attributes) => $factory->createMany($bakugan->dataForMany($name, $attributes));
 
         // cf. https://bakugandb.com/bakutech
 
-        $register("Flare Dragaon", [
+        $register('Flare Dragaon', [
             BakuganAttribute::PYRUS,
         ]);
 
-        $register("Gren Dragaon", [
+        $register('Gren Dragaon', [
             BakuganAttribute::PYRUS,
         ]);
 
-        $register("Rise Dragaon", [
+        $register('Rise Dragaon', [
             BakuganAttribute::PYRUS,
         ]);
 
-        $register("Kilan Leoness", [
+        $register('Kilan Leoness', [
             BakuganAttribute::HAOS,
         ]);
 
-        $register("Shield Leoness", [
+        $register('Shield Leoness', [
             BakuganAttribute::HAOS,
         ]);
 
-        $register("Van Falco", [
+        $register('Van Falco', [
             BakuganAttribute::VENTUS,
         ]);
 
-        $register("Tri Falco", [
+        $register('Tri Falco', [
             BakuganAttribute::VENTUS,
         ]);
 
-        $register("Gran Panzer", [
+        $register('Gran Panzer', [
             BakuganAttribute::SUBTERRA,
         ]);
 
-        $register("Ken Panzer", [
+        $register('Ken Panzer', [
             BakuganAttribute::SUBTERRA,
         ]);
 
-        $register("Destroy Munikis", [
+        $register('Destroy Munikis', [
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Zero Munikis", [
+        $register('Zero Munikis', [
             BakuganAttribute::SUBTERRA,
         ]);
 
-        $register("Hollow Munikis", [
+        $register('Hollow Munikis', [
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Dio Sivac", [
+        $register('Dio Sivac', [
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Sechs Tavanel", [
+        $register('Sechs Tavanel', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::AQUOS,
             BakuganAttribute::HAOS,
@@ -92,99 +91,99 @@ class BakuTechSeeder extends Seeder
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Seis Tavanel", [
+        $register('Seis Tavanel', [
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Acro Gezard", [
+        $register('Acro Gezard', [
             BakuganAttribute::SUBTERRA,
         ]);
 
-        $register("Act Jile", [
+        $register('Act Jile', [
             BakuganAttribute::HAOS,
         ]);
 
-        $register("Blan Shoult", [
+        $register('Blan Shoult', [
             BakuganAttribute::HAOS,
         ]);
 
-        $register("Bone Skuls", [
+        $register('Bone Skuls', [
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Borg Mahisas", [
+        $register('Borg Mahisas', [
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Butta Gill", [
+        $register('Butta Gill', [
             BakuganAttribute::AQUOS,
         ]);
 
-        $register("Co Tanker", [
+        $register('Co Tanker', [
             BakuganAttribute::AQUOS,
         ]);
 
-        $register("Dagger Odos", [
+        $register('Dagger Odos', [
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Dive Fujo", [
+        $register('Dive Fujo', [
             BakuganAttribute::AQUOS,
         ]);
 
-        $register("En Glide", [
+        $register('En Glide', [
             BakuganAttribute::PYRUS,
         ]);
 
-        $register("Flame Aigle", [
+        $register('Flame Aigle', [
             BakuganAttribute::PYRUS,
         ]);
 
-        $register("Gavli Anacon", [
+        $register('Gavli Anacon', [
             BakuganAttribute::SUBTERRA,
         ]);
 
-        $register("Gif Jinryu", [
+        $register('Gif Jinryu', [
             BakuganAttribute::AQUOS,
         ]);
 
-        $register("Gigan Taures", [
+        $register('Gigan Taures', [
             BakuganAttribute::HAOS,
         ]);
 
-        $register("Goon Icarus", [
+        $register('Goon Icarus', [
             BakuganAttribute::AQUOS,
         ]);
 
-        $register("Gravity Nome", [
+        $register('Gravity Nome', [
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Gus Burnan", [
+        $register('Gus Burnan', [
             BakuganAttribute::PYRUS,
         ]);
 
-        $register("G-Ganadora", [
+        $register('G-Ganadora', [
             BakuganAttribute::PYRUS,
         ]);
 
-        $register("Hagger Dguma", [
+        $register('Hagger Dguma', [
             BakuganAttribute::SUBTERRA,
         ]);
 
-        $register("Hammer Cannon", [
+        $register('Hammer Cannon', [
             BakuganAttribute::SUBTERRA,
         ]);
 
-        $register("Kachia Gell", [
+        $register('Kachia Gell', [
             BakuganAttribute::PYRUS,
         ]);
 
-        $register("Kal Lucan", [
+        $register('Kal Lucan', [
             BakuganAttribute::VENTUS,
         ]);
 
-        $register("Killer Volca", [
+        $register('Killer Volca', [
             BakuganAttribute::AQUOS,
         ]);
 
@@ -192,145 +191,145 @@ class BakuTechSeeder extends Seeder
             BakuganAttribute::PYRUS,
         ]);
 
-        $register("Mika Laurel", [
+        $register('Mika Laurel', [
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Nata Nagina", [
+        $register('Nata Nagina', [
             BakuganAttribute::PYRUS,
         ]);
 
-        $register("Saint Aquas", [
+        $register('Saint Aquas', [
             BakuganAttribute::AQUOS,
         ]);
 
-        $register("Sea Slug", [
+        $register('Sea Slug', [
             BakuganAttribute::AQUOS,
         ]);
 
-        $register("Sha Nozchi", [
+        $register('Sha Nozchi', [
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Twin Doubrew", [
+        $register('Twin Doubrew', [
             BakuganAttribute::AQUOS,
         ]);
 
-        $register("War Cry", [
+        $register('War Cry', [
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Well Galow", [
+        $register('Well Galow', [
             BakuganAttribute::HAOS,
         ]);
 
-        $register("Win Dmill", [
+        $register('Win Dmill', [
             BakuganAttribute::VENTUS,
         ]);
 
-        $register("Zak Jaguard", [
+        $register('Zak Jaguard', [
             BakuganAttribute::SUBTERRA,
         ]);
 
-        $register("Jigen Dragaon", [
+        $register('Jigen Dragaon', [
             BakuganAttribute::PYRUS,
             BakuganAttribute::VENTUS,
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Ogre Leoness", [
+        $register('Ogre Leoness', [
             BakuganAttribute::HAOS,
         ]);
 
-        $register("Lashow Falco", [
+        $register('Lashow Falco', [
             BakuganAttribute::VENTUS,
         ]);
 
-        $register("Zeta Munikis", [
+        $register('Zeta Munikis', [
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Barri Beyond", [
+        $register('Barri Beyond', [
             BakuganAttribute::AQUOS,
         ]);
 
-        $register("Gaga Horus", [
+        $register('Gaga Horus', [
             BakuganAttribute::PYRUS,
         ]);
 
-        $register("Go Garyu", [
+        $register('Go Garyu', [
             BakuganAttribute::HAOS,
         ]);
 
-        $register("Jigen Garyu", [
+        $register('Jigen Garyu', [
             BakuganAttribute::VENTUS,
         ]);
 
-        $register("Go Fudo", [
+        $register('Go Fudo', [
             BakuganAttribute::HAOS,
         ]);
 
-        $register("Jiba Fudo", [
+        $register('Jiba Fudo', [
             BakuganAttribute::SUBTERRA,
         ]);
 
-        $register("Jiba Dragaon", [
+        $register('Jiba Dragaon', [
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Naga Daja", [
+        $register('Naga Daja', [
             BakuganAttribute::HAOS,
         ]);
 
-        $register("Nino Daishow", [
+        $register('Nino Daishow', [
             BakuganAttribute::VENTUS,
         ]);
 
-        $register("Os Press", [
+        $register('Os Press', [
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Sanzu Hollowbos", [
+        $register('Sanzu Hollowbos', [
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Tor Nado", [
+        $register('Tor Nado', [
             BakuganAttribute::SUBTERRA,
         ]);
 
-        $register("Yodan Shifour", [
+        $register('Yodan Shifour', [
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Made Lastboss", [
+        $register('Made Lastboss', [
             BakuganAttribute::PYRUS,
         ]);
 
-        $register("Rekka Hiryu", [
+        $register('Rekka Hiryu', [
             BakuganAttribute::PYRUS,
         ]);
 
-        $register("Hado Kaio", [
+        $register('Hado Kaio', [
             BakuganAttribute::AQUOS,
         ]);
 
-        $register("Ogon Houoh", [
+        $register('Ogon Houoh', [
             BakuganAttribute::HAOS,
         ]);
 
-        $register("Shippu Zeku", [
+        $register('Shippu Zeku', [
             BakuganAttribute::VENTUS,
         ]);
 
-        $register("Koppa Kudaku", [
+        $register('Koppa Kudaku', [
             BakuganAttribute::SUBTERRA,
         ]);
 
-        $register("Yasha Tagaras", [
+        $register('Yasha Tagaras', [
             BakuganAttribute::DARKUS,
         ]);
 
-        $register("Ikki Tosen", [
+        $register('Ikki Tosen', [
             BakuganAttribute::HAOS,
         ]);
     }

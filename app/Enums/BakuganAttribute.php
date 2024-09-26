@@ -14,7 +14,7 @@ enum BakuganAttribute: int
 
     public function label(): string
     {
-        return match($this) {
+        return match ($this) {
             BakuganAttribute::AQUOS => 'Aquos',
             BakuganAttribute::ATTRIBUTELESS => 'Attributeless',
             BakuganAttribute::DARKUS => 'Darkus',

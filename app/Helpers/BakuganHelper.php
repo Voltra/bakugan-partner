@@ -15,29 +15,32 @@ class BakuganHelper
     public function dataFor(string $name, BakuganAttribute $attribute): array
     {
         return [
-            "name" => $name,
-            "attribute" => $attribute,
-            "season" => $this->bakuganSeason,
+            'name' => $name,
+            'attribute' => $attribute,
+            'season' => $this->bakuganSeason,
         ];
     }
 
     /**
-     * @param BakuganAttribute[] $attributes
+     * @param  BakuganAttribute[]  $attributes
      */
-    public function dataForMany(string $name, array $attributes): array {
-        return array_map(fn(BakuganAttribute $attribute) => $this->dataFor($name, $attribute), $attributes);
+    public function dataForMany(string $name, array $attributes): array
+    {
+        return array_map(fn (BakuganAttribute $attribute) => $this->dataFor($name, $attribute), $attributes);
     }
 
     public function make(string $name, BakuganAttribute $attribute): Bakugan
     {
         $data = $this->dataFor($name, $attribute);
+
         return new Bakugan($data);
     }
 
     /**
-     * @param BakuganAttribute[] $attributes
+     * @param  BakuganAttribute[]  $attributes
      */
-    public function makeMany(string $name, array $attributes): array {
-        return array_map(fn(BakuganAttribute $attribute) => $this->make($name, $attribute), $attributes);
+    public function makeMany(string $name, array $attributes): array
+    {
+        return array_map(fn (BakuganAttribute $attribute) => $this->make($name, $attribute), $attributes);
     }
 }

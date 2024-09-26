@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @template T of Model
+ *
  * @extends  \Illuminate\Database\Eloquent\Factories\Factory<T>
  */
 trait BatchesFactoryCreation
@@ -17,17 +18,20 @@ trait BatchesFactoryCreation
     public function createMany(int|iterable|null $records = null): EloquentCollection
     {
         $this->batchData = array_merge($this->batchData, Arr::wrap($records));
-        return new EloquentCollection();
+
+        return new EloquentCollection;
     }
 
-    public function commitBatch(): void {
+    public function commitBatch(): void
+    {
         parent::createMany($this->batchData);
 
         $this->batchData = [];
     }
 
-    public function __destruct() {
-        if (!empty($this->batchData)) {
+    public function __destruct()
+    {
+        if (! empty($this->batchData)) {
             $this->commitBatch();
         }
     }

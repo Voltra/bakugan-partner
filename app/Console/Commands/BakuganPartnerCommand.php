@@ -9,6 +9,7 @@ use Illuminate\Contracts\Console\PromptsForMissingInput;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Date;
 use Throwable;
+
 use function Laravel\Prompts\spin;
 use function Laravel\Prompts\text;
 
@@ -33,7 +34,7 @@ class BakuganPartnerCommand extends Command implements PromptsForMissingInput
     protected function promptForMissingArgumentsUsing(): array
     {
         return [
-            'birthday' => fn() => $this->promptBirthday(),
+            'birthday' => fn () => $this->promptBirthday(),
         ];
     }
 
@@ -44,9 +45,9 @@ class BakuganPartnerCommand extends Command implements PromptsForMissingInput
     {
         $birthday = $this->getBirthday();
 
-        $this->line("Your Bakugan partner is...");
+        $this->line('Your Bakugan partner is...');
 
-        $partner = spin(fn(): Bakugan => $action($birthday));
+        $partner = spin(fn (): Bakugan => $action($birthday));
 
         $this->info("{$partner->full_name}");
 
@@ -59,10 +60,10 @@ class BakuganPartnerCommand extends Command implements PromptsForMissingInput
     {
         $birthday = text(
             label: "When's your birthday? (format: YYYY-MM-DD, e.g. 1998-12-15)",
-            placeholder: "YYYY-MM-DD",
+            placeholder: 'YYYY-MM-DD',
             required: true,
-            validate: ['birthday' => 'date_format:' . static::DATE_FORMAT],
-            hint: "YYYY-MM-DD",
+            validate: ['birthday' => 'date_format:'.static::DATE_FORMAT],
+            hint: 'YYYY-MM-DD',
         );
 
         return $this->asDate($birthday);
@@ -74,6 +75,7 @@ class BakuganPartnerCommand extends Command implements PromptsForMissingInput
 
         try {
             $date = $this->asDate($arg);
+
             return $date === false ? $this->promptBirthday() : $date;
         } catch (Throwable $e) {
             return $this->promptBirthday();
