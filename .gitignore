@@ -1,3 +1,6 @@
+/public/bakugan.json
+/resources/types/generated*.ts
+
 /.phpunit.cache
 /node_modules
 /public/build

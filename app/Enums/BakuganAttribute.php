@@ -2,6 +2,9 @@
 
 namespace App\Enums;
 
+use Spatie\TypeScriptTransformer\Attributes\TypeScript;
+
+#[TypeScript]
 enum BakuganAttribute: int
 {
     case PYRUS = 0;

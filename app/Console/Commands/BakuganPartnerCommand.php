@@ -49,7 +49,7 @@ class BakuganPartnerCommand extends Command implements PromptsForMissingInput
 
         $partner = spin(fn (): Bakugan => $action($birthday));
 
-        $this->info("{$partner->full_name}");
+        $this->info($partner->full_name);
 
         $this->newLine();
 
@@ -74,7 +74,7 @@ class BakuganPartnerCommand extends Command implements PromptsForMissingInput
         $arg = $this->argument('birthday');
 
         try {
-            $date = $this->asDate($arg);
+            $date = $arg instanceof Carbon ? $arg : $this->asDate($arg);
 
             return $date === false ? $this->promptBirthday() : $date;
         } catch (Throwable $e) {

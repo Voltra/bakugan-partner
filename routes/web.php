@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\BakuganPartnerController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'index');
+
+//Route::get('/api/bakugan-partner', BakuganPartnerController::class);

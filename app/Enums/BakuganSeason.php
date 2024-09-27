@@ -2,6 +2,9 @@
 
 namespace App\Enums;
 
+use Spatie\TypeScriptTransformer\Attributes\TypeScript;
+
+#[TypeScript]
 enum BakuganSeason: int
 {
     case BATTLE_BRAWLERS = 0;
@@ -19,13 +22,5 @@ enum BakuganSeason: int
             BakuganSeason::MECHTANIUM_SURGE => 'Mechtanium Surge',
             BakuganSeason::BAKUTECH => 'BakuTech',
         };
-    }
-
-    /**
-     * @return int[]
-     */
-    public static function values(): array
-    {
-        return array_map(fn (BakuganSeason $case) => $case->value, self::cases());
     }
 }
