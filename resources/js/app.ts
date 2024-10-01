@@ -1,6 +1,9 @@
-import './bootstrap';
-import { bakuganPartner } from "./bakuganPartner";
-import { parseDate } from "./lib/date";
+import "@/js/bootstrap";
+import { parseDate } from "@/js/lib/date";
+import { getBakuganPartnerDriver } from "@/js/drivers";
+import { BakuganPartnerDriverType } from "@/js/BakuganPartnerDriver";
+
+const driver = getBakuganPartnerDriver(BakuganPartnerDriverType.LOCAL);
 
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector<HTMLFormElement>("#form")!;
@@ -19,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         (async () => {
             const date = dateInput.value;
-            const partner = await bakuganPartner(parseDate(date));
+            const partner = await driver(parseDate(date));
 
             nameResult.textContent = partner.full_name;
             linkResult.textContent = partner.search_query;

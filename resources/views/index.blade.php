@@ -26,6 +26,7 @@
                 autocomplete="birthday"
                 placeholder="YYYY-MM-DD"
                 required
+                autofocus
             />
 
             <button

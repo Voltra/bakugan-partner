@@ -10,6 +10,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
  */
 class BakuganResource extends JsonResource
 {
+    public static $wrap = null;
+
     /**
      * Transform the resource into an array.
      *
@@ -17,12 +19,15 @@ class BakuganResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $bakugan = $this->resource;
+
         return [
-            'attribute' => $this->resource->attribute->label(),
-            'name' => $this->resource->name,
-            'season' => $this->resource->season->label(),
-            'full_name' => $this->resource->full_name,
-            'google_url' => $this->resource->img_search_url,
+            'attribute' => $bakugan->attribute->label(),
+            'name' => $bakugan->name,
+            'season' => $bakugan->season->label(),
+            'full_name' => $bakugan->full_name,
+            'search_query' => $bakugan->img_search_query,
+            'search_url' => $bakugan->img_search_url,
         ];
     }
 }

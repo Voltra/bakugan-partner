@@ -44,27 +44,6 @@ export class MersenneTwister {
     }
 
     /**
-     * Initializes mt[N] with a seed.
-     * @param {number} s The numeric seed.
-     */
-    private _init_genrand(s: number): void {
-        this.mt[0] = s >>> 0;
-        for (this.mti = 1; this.mti < this.N; this.mti++) {
-            s = this.mt[this.mti - 1] ^ (this.mt[this.mti - 1] >>> 30);
-            this.mt[this.mti] =
-                ((((s & 0xffff0000) >>> 16) * 1812433253) << 16) +
-                (s & 0x0000ffff) * 1812433253 +
-                this.mti;
-            /* See Knuth TAOCP Vol2. 3rd Ed. P.106 for multiplier. */
-            /* In the previous versions, MSBs of the seed affect   */
-            /* only MSBs of the array mt[].                        */
-            /* 2002/01/09 modified by Makoto Matsumoto             */
-            this.mt[this.mti] >>>= 0;
-            /* for >32 bit machines */
-        }
-    }
-
-    /**
      * Generates a random number on [0,0xffffffff]-interval.
      * @return {number} A randomnly generated 32-bit integer.
      */
@@ -157,6 +136,27 @@ export class MersenneTwister {
             b = this.genrand_int32() >>> 6;
         return (a * 67108864.0 + b) * (1.0 / 9007199254740992.0);
     }
+
+    /**
+     * Initializes mt[N] with a seed.
+     * @param {number} s The numeric seed.
+     */
+    private _init_genrand(s: number): void {
+        this.mt[0] = s >>> 0;
+        for (this.mti = 1; this.mti < this.N; this.mti++) {
+            s = this.mt[this.mti - 1] ^ (this.mt[this.mti - 1] >>> 30);
+            this.mt[this.mti] =
+                ((((s & 0xffff0000) >>> 16) * 1812433253) << 16) +
+                (s & 0x0000ffff) * 1812433253 +
+                this.mti;
+            /* See Knuth TAOCP Vol2. 3rd Ed. P.106 for multiplier. */
+            /* In the previous versions, MSBs of the seed affect   */
+            /* only MSBs of the array mt[].                        */
+            /* 2002/01/09 modified by Makoto Matsumoto             */
+            this.mt[this.mti] >>>= 0;
+            /* for >32 bit machines */
+        }
+    }
 }
 
 const mt19937 = {
@@ -167,14 +167,16 @@ const mt19937 = {
 /**
  * Seed randomness
  */
-export const srand = (seed: number) => { mt19937.rng = new MersenneTwister(seed); }
+export const srand = (seed: number) => {
+    mt19937.rng = new MersenneTwister(seed);
+};
 
 /**
  * Generate a random number within [0 ; 2^31 - 1[
  */
-export const rand = () => mt19937.rng.genrand_int32()
+export const rand = () => mt19937.rng.genrand_int32();
 
 /**
  * Generate a random number within [0 ; 1[
  */
-export const nrand = () => mt19937.rng.random()
+export const nrand = () => mt19937.rng.random();

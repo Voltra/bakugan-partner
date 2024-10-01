@@ -71,7 +71,7 @@ class BakuTechSeeder extends Seeder
         ]);
 
         $register('Zero Munikis', [
-            BakuganAttribute::SUBTERRA,
+            BakuganAttribute::DARKUS,
         ]);
 
         $register('Hollow Munikis', [

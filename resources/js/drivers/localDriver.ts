@@ -1,9 +1,10 @@
-import { BakuganAttribute, BakuganSeason } from "../types/generated";
-import { srand } from "./lib/mt19937";
-import { shuffle } from "./lib/shuffle";
-import { Bakugan } from "../types/Bakugan";
+import { BakuganAttribute, BakuganSeason } from "@/types/generated";
+import { srand } from "@/js/lib/mt19937";
+import { shuffle } from "@/js/lib/shuffle";
+import { Bakugan } from "@/types/Bakugan";
 import { asSequence } from "sequency";
-import swr from "swr-promise"
+import swr from "swr-promise";
+import { BakuganPartnerDriver } from "@/js/BakuganPartnerDriver";
 
 // Note that this implementation is potentially different from
 // the PHP one on the basis that the RNG systems used
@@ -12,7 +13,7 @@ import swr from "swr-promise"
 // a very poor builtin RNG, and thus
 // having to port one in.
 
-const CALIBRATION_KEY = 610239; //NOTE: DO NOT TOUCH UNDER ANY CIRCUMSTANCES
+const CALIBRATION_KEY = 503714; //NOTE: DO NOT TOUCH UNDER ANY CIRCUMSTANCES
 
 // const allBakugan = async () => [] as Bakugan[];
 const allBakugan = swr(async () => {
@@ -30,7 +31,7 @@ const allBakugan = swr(async () => {
 
     return data;
 }, {
-    maxAge: 120 * 60 * 1000 // 120 minutes
+    maxAge: 120 * 60 * 1000, // 120 minutes
 }) as () => Promise<Bakugan[]>;
 
 const pickSeason = (birthday: Date): BakuganSeason => {
@@ -38,7 +39,7 @@ const pickSeason = (birthday: Date): BakuganSeason => {
     shuffle(seasons);
     const index = (birthday.getFullYear() + 1) % seasons.length;
     return seasons[index]! as BakuganSeason;
-}
+};
 
 const pickAttribute = async (birthday: Date, season: BakuganSeason) => {
     const bakuganList = await allBakugan();
@@ -54,7 +55,7 @@ const pickAttribute = async (birthday: Date, season: BakuganSeason) => {
     const index = (birthday.getMonth() + 1) % attributes.length;
 
     return attributes[index]!;
-}
+};
 
 const pickPartner = async (birthday: Date, season: BakuganSeason, attribute: BakuganAttribute) => {
     const bakuganList = await allBakugan();
@@ -74,7 +75,7 @@ const pickPartner = async (birthday: Date, season: BakuganSeason, attribute: Bak
     return bakugans[index]!;
 };
 
-export const bakuganPartner = async (birthday: Date): Promise<Bakugan> => {
+export const localDriver: BakuganPartnerDriver = async birthday => {
     const randomSeed = birthday.valueOf() + CALIBRATION_KEY;
 
     srand(randomSeed);
