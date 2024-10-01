@@ -59,20 +59,20 @@ const pickAttribute = async (birthday: Date, season: BakuganSeason) => {
 
 const pickPartner = async (birthday: Date, season: BakuganSeason, attribute: BakuganAttribute) => {
     const bakuganList = await allBakugan();
-    const bakugans = asSequence(bakuganList)
+    const matchingBakuganList = asSequence(bakuganList)
         .filter(b => b.season === season)
         .filter(b => b.attribute === attribute)
         .sortedBy(b => b.name)
         .toArray();
 
-    shuffle(bakugans);
+    shuffle(matchingBakuganList);
 
-    if (bakugans.length <= 2) {
-        return bakugans[0]!;
+    if (matchingBakuganList.length <= 2) {
+        return matchingBakuganList[0]!;
     }
 
-    const index = (birthday.getDate() + 1) % bakugans.length;
-    return bakugans[index]!;
+    const index = (birthday.getDate() + 1) % matchingBakuganList.length;
+    return matchingBakuganList[index]!;
 };
 
 export const localDriver: BakuganPartnerDriver = async birthday => {
