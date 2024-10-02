@@ -33,6 +33,7 @@ return [
     'exclude_file_patterns' => [
         '/\.php$/',
         '/mix-manifest\.json$/',
+        '/\.htaccess$/',
     ],
 
     /*
@@ -47,7 +48,7 @@ return [
      *
      * If empty, your site will be exported to a `dist` folder.
      */
-    'disk' => null,
+    'disk' => 'export',
 
     /*
      * Shell commands that should be run before the export starts when running
@@ -68,6 +69,7 @@ return [
      * You can skip these by adding a `--skip-{name}` flag to the command.
      */
     'after' => [
+        'tweakUrls' => 'node ./scripts/post-export.js',
         // 'deploy' => '/usr/local/bin/netlify deploy --prod',
     ],
 

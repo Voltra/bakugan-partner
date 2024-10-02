@@ -2,9 +2,11 @@
 <html lang="en" class="w-full h-full">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86, interactive-widget=resizes-content">
 
-        <link rel="preload" href="{{ url('/bakugan.json') }}" />
+        <link rel="preload" href="{{ url('/bakugan.json') }}" type="application/json" />
+
+        <link rel="icon" href="{{ url('/favicon.ico') }}" />
 
         <title>Bakugan Partner | VoltraBakuganFr</title>
 
@@ -17,6 +19,8 @@
         <meta property="og:image:alt" content="Your Bakugan Partner" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:site_name" content="VoltraBakuganFr" />
+        <meta property="og:url" content="{{ url('/') }}" />
+        <meta name="twitter:card" content="summary_large_image" />
 
         @vite('resources/css/app.css')
     </head>

@@ -1,4 +1,5 @@
 /dist
+/storage/export
 /public/bakugan.json
 /resources/types/generated*.ts
 

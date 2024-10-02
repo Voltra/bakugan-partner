@@ -17,7 +17,8 @@ const CALIBRATION_KEY = 503714; //NOTE: DO NOT TOUCH UNDER ANY CIRCUMSTANCES
 
 // const allBakugan = async () => [] as Bakugan[];
 const allBakugan = swr(async () => {
-    const response = await fetch("/bakugan.json", {
+    // @ts-expect-error document.location is a valid argument to URL
+    const response = await fetch(new URL("bakugan.json", document.location), {
         cache: "force-cache",
     });
 

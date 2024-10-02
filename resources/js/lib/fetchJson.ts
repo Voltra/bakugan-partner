@@ -6,7 +6,8 @@ const swrFetch = swr(fetch, {
 
 export const fetchJson = async <T>(uri: string, params: Record<string, any> = {}) => {
     const queryString = new URLSearchParams(params);
-    const url = new URL(uri, document.location.origin);
+    // @ts-expect-error document.location is a valid argument to URL
+    const url = new URL(uri, document.location);
 
     queryString.forEach((value, key) => {
         url.searchParams.append(key, value);
