@@ -1,0 +1,70 @@
+From 1d0e6e42dddcc4f11e96d8ab68984a85cd042c85 Mon Sep 17 00:00:00 2001
+From: Voltra <Voltra@users.noreply.github.com>
+Date: Thu, 11 Apr 2024 11:49:58 +0000
+Subject: [PATCH 1/2] Fix directory detection for Windows directory symlinks
+
+---
+ src/Jobs/IncludeFile.php | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/src/Jobs/IncludeFile.php b/src/Jobs/IncludeFile.php
+index 21561fe..55ca965 100644
+--- a/src/Jobs/IncludeFile.php
++++ b/src/Jobs/IncludeFile.php
+@@ -55,7 +55,14 @@ protected function exportIncludedDirectory(string $source, string $target, Desti
+         );
+
+         foreach ($iterator as $item) {
+-            if ($item->isDir()) {
++            // Checkin isDir() on $item could lead to false negatives due to the way
++            // symlinks are handled on Windows, especially if created under Git-For-Windows.
++            // When debugging it could lead to isDir(), isFile() and isLink() to all 3 be false.
++            // Despite that, getRealPath() does return the resolved symlink path.
++            // Hence why we check on $realItem instead.
++            // Copying Windows "symlinks" as files would also be "wrong" and not portable across file systems.
++            $realItem = new \SplFileInfo($item->getRealPath());
++            if ($realItem->isDir()) {
+                 continue;
+             }
+
+
+From 6b6c1b808e1c7a3c23ef3fcfd117a406fd2ffae8 Mon Sep 17 00:00:00 2001
+From: Voltra <Voltra@users.noreply.github.com>
+Date: Thu, 11 Apr 2024 12:05:44 +0000
+Subject: [PATCH 2/2] Properly export said symlinked directories
+
+---
+ src/Jobs/IncludeFile.php | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/src/Jobs/IncludeFile.php b/src/Jobs/IncludeFile.php
+index 55ca965..312ac54 100644
+--- a/src/Jobs/IncludeFile.php
++++ b/src/Jobs/IncludeFile.php
+@@ -55,6 +55,10 @@ protected function exportIncludedDirectory(string $source, string $target, Desti
+         );
+
+         foreach ($iterator as $item) {
++            if ($item->isDir()) {
++                continue;
++            }
++
+             // Checkin isDir() on $item could lead to false negatives due to the way
+             // symlinks are handled on Windows, especially if created under Git-For-Windows.
+             // When debugging it could lead to isDir(), isFile() and isLink() to all 3 be false.
+@@ -63,6 +67,15 @@ protected function exportIncludedDirectory(string $source, string $target, Desti
+             // Copying Windows "symlinks" as files would also be "wrong" and not portable across file systems.
+             $realItem = new \SplFileInfo($item->getRealPath());
+             if ($realItem->isDir()) {
++                // Since it was a symlink, the subfiles weren't crawled recursively
++                // so we need to "recursively" export that directory in our export
++                // destination to maintain the expected file structure, and to copy
++                // absolutely all the files we needed to copy.
++                $this->exportIncludedDirectory(
++                    $realItem->getPathname(),
++                    $target.'/'.$iterator->getSubPathName(),
++                    $destination
++                );
+                 continue;
+             }
+

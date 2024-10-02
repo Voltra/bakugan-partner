@@ -4,13 +4,25 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="preload" href="/bakugan.json" />
+        <link rel="preload" href="{{ url('/bakugan.json') }}" />
 
-        <title>Guardian Bakugan</title>
+        <title>Bakugan Partner | VoltraBakuganFr</title>
+
+        <meta property="og:title" content="Who is your Bakugan Partner?" />
+        <meta property="og:description" content="Learn who your Bakugan Partner is!" />
+        <meta property="og:image" content="{{ url('/opengraph.jpg') }}" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1920" />
+        <meta property="og:image:height" content="1080" />
+        <meta property="og:image:alt" content="Your Bakugan Partner" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="VoltraBakuganFr" />
 
         @vite('resources/css/app.css')
     </head>
-    <body class="bg-cyan-800 w-full h-full flex flex-col gap-8 justify-center items-center">
+    <body id="honeycomb" class="bg-gray-900 w-full min-h-full p-4 overflow-y-auto flex flex-col gap-8 justify-center items-center">
+        @svg('bakugan-logo', 'max-w-80 min-w-20')
+
         <form id="form" class="flex flex-col gap-4 justify-center items-center" action="/">
             <label
                 for="date"
@@ -30,22 +42,22 @@
             />
 
             <button
-                class="duration-500 mt-2 text-xl text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-2xl px-5 py-2.5 text-center mb-2"
+                class="duration-500 mt-2 text-xl text-white bg-gradient-to-r from-[#800000] via-[#D71920] to-[#D71F25] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-2xl px-5 py-2.5 text-center mb-2"
                 type="submit"
             >
-                Learn who your Guardian Bakugan is
+                Learn who your Bakugan Partner is
             </button>
         </form>
 
         <div id="resultBox" class="hidden bg-white rounded-3xl p-8 flex-col gap-8 justify-center items-center">
             <p class="font-bold text-xl">
-                Your Guardian Bakugan is...
+                Your Bakugan Partner is...
             </p>
 
             <p id="guardian-bakugan" class="text-4xl font-bold text-emerald-600"></p>
 
             <p>
-                Check it out on Google Image: <a id="guardian-bakugan-url" class="text-cyan-700 underline" href="#" target="_blank"></a>
+                Check it out on Google Image: <a id="guardian-bakugan-url" class="text-[#D71920] underline" href="#" target="_blank"></a>
             </p>
         </div>
 

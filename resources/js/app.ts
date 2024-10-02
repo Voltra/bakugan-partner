@@ -30,6 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             resultBox.classList.remove("hidden");
             resultBox.classList.add("flex");
+
+            resultBox.scrollIntoView(true);
         })();
     });
 });

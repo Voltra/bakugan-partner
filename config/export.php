@@ -14,7 +14,7 @@ return [
      *
      * For example: "about", "posts/featured"
      */
-    'paths' => [],
+    'paths' => ['/'],
 
     /*
      * Files and folders that should be included in the build. Expects
@@ -56,7 +56,9 @@ return [
      * You can skip these by adding a `--skip-{name}` flag to the command.
      */
     'before' => [
-        // 'assets' => '/usr/local/bin/yarn production',
+        'jsonDB' => 'php artisan app:export-database-json',
+        'icons' => 'php artisan icons:cache',
+        'assets' => 'npm run build',
     ],
 
     /*

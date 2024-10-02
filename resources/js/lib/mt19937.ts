@@ -1,5 +1,6 @@
 /**
  * Mersenne Twister originally borrowed from https://gist.github.com/banksean/300494.
+ * @see https://github.com/chancejs/chancejs/blob/201e320a0b4bc7e4ca95d3c70dbfb17974adea0d/packages/mersenne-twister/src/index.ts
  */
 export class MersenneTwister {
     /**
