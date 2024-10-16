@@ -63,6 +63,13 @@
             <p>
                 Check it out on Google Image: <a id="guardian-bakugan-url" class="text-[#D71920] underline" href="#" target="_blank"></a>
             </p>
+
+            <label for="redo-no-marvel" class="hidden">
+                <input id="redo-no-marvel" type="checkbox"/>
+                <span>
+                    Re-do without Marvel Bakugan
+                </span>
+            </label>
         </div>
 
 

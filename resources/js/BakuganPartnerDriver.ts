@@ -5,4 +5,8 @@ export enum BakuganPartnerDriverType {
     API = "api",
 }
 
-export type BakuganPartnerDriver = (birthday: Date) => Promise<Bakugan>;
+export interface BakuganPartnerDriverSettings {
+    withoutMarvel: boolean;
+}
+
+export type BakuganPartnerDriver = (birthday: Date, settings?: BakuganPartnerDriverSettings) => Promise<Bakugan>;

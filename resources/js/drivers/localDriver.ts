@@ -76,8 +76,8 @@ const pickPartner = async (birthday: Date, season: BakuganSeason, attribute: Bak
     return matchingBakuganList[index]!;
 };
 
-export const localDriver: BakuganPartnerDriver = async birthday => {
-    const randomSeed = birthday.valueOf() + CALIBRATION_KEY;
+export const localDriver: BakuganPartnerDriver = async (birthday, settings) => {
+    const randomSeed = birthday.valueOf() + CALIBRATION_KEY + (settings?.withoutMarvel ? 404 : 0);
 
     srand(randomSeed);
 
