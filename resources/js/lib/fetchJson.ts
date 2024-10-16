@@ -1,8 +1,8 @@
-import swr from "swr-promise"
+import swr from "swr-promise";
 
 const swrFetch = swr(fetch, {
     maxAge: Infinity,
-}) as (input: RequestInfo|URL, init?: RequestInit) => Promise<Response>;
+}) as (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>;
 
 export const fetchJson = async <T>(uri: string, params: Record<string, any> = {}) => {
     const queryString = new URLSearchParams(params);

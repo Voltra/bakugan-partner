@@ -4,7 +4,7 @@ import { shuffle } from "@/js/lib/shuffle";
 import { Bakugan } from "@/types/Bakugan";
 import { asSequence } from "sequency";
 import swr from "swr-promise";
-import { BakuganPartnerDriver } from "@/js/BakuganPartnerDriver";
+import { BakuganPartnerDriver, BakuganPartnerDriverSettings } from "@/js/BakuganPartnerDriver";
 
 // Note that this implementation is potentially different from
 // the PHP one on the basis that the RNG systems used
@@ -15,7 +15,6 @@ import { BakuganPartnerDriver } from "@/js/BakuganPartnerDriver";
 
 const CALIBRATION_KEY = 503714; //NOTE: DO NOT TOUCH UNDER ANY CIRCUMSTANCES
 
-// const allBakugan = async () => [] as Bakugan[];
 const allBakugan = swr(async () => {
     // @ts-expect-error document.location is a valid argument to URL
     const response = await fetch(new URL("bakugan.json", document.location), {
@@ -35,11 +34,21 @@ const allBakugan = swr(async () => {
     maxAge: 120 * 60 * 1000, // 120 minutes
 }) as () => Promise<Bakugan[]>;
 
-const pickSeason = (birthday: Date): BakuganSeason => {
-    const seasons = Object.values(BakuganSeason).filter(val => typeof val === "number");
+const pickSeason = (birthday: Date, settings: BakuganPartnerDriverSettings): BakuganSeason => {
+    const seasons = asSequence(Object.values(BakuganSeason))
+        .filter((val): val is BakuganSeason => typeof val === "number")
+        .map(season => season as BakuganSeason)
+        .filterNot(season => season === BakuganSeason.BATTLE_BRAWLERS && settings.noBattleBrawlers)
+        .filterNot(season => season === BakuganSeason.NEW_VESTROIA && settings.noNewVestroia)
+        .filterNot(season => season === BakuganSeason.GUNDALIAN_INVADERS && settings.noGundalianInvaders)
+        .filterNot(season => season === BakuganSeason.MECHTANIUM_SURGE && settings.noMechtaniumSurge)
+        .filterNot(season => season === BakuganSeason.BAKUTECH && settings.noBakuTech)
+        .toArray();
+
     shuffle(seasons);
+
     const index = (birthday.getFullYear() + 1) % seasons.length;
-    return seasons[index]! as BakuganSeason;
+    return seasons[index]!;
 };
 
 const pickAttribute = async (birthday: Date, season: BakuganSeason) => {
@@ -81,7 +90,7 @@ export const localDriver: BakuganPartnerDriver = async (birthday, settings) => {
 
     srand(randomSeed);
 
-    const season = pickSeason(birthday);
+    const season = pickSeason(birthday, settings);
     const attribute = await pickAttribute(birthday, season);
     return pickPartner(birthday, season, attribute);
 };

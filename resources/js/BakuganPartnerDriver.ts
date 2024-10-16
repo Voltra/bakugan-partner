@@ -7,6 +7,11 @@ export enum BakuganPartnerDriverType {
 
 export interface BakuganPartnerDriverSettings {
     withoutMarvel: boolean;
+    noBattleBrawlers: boolean;
+    noNewVestroia: boolean;
+    noGundalianInvaders: boolean;
+    noMechtaniumSurge: boolean;
+    noBakuTech: boolean;
 }
 
-export type BakuganPartnerDriver = (birthday: Date, settings?: BakuganPartnerDriverSettings) => Promise<Bakugan>;
+export type BakuganPartnerDriver = (birthday: Date, settings: BakuganPartnerDriverSettings) => Promise<Bakugan>;

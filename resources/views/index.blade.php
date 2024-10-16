@@ -45,6 +45,60 @@
                 autofocus
             />
 
+            <section id="options-section" class="bg-white border border-gray-300 rounded-lg w-full max-w-80 flex flex-col">
+                <h3 class="block text-center text-md font-medium">
+                    <button class="group w-full p-4 flex justify-between items-center align-middle" type="button" aria-expanded="false" aria-controls="options" id="options-label">
+                        <span>
+                            Advanced options
+                        </span>
+                        <span class="group-aria-expanded:hidden block" aria-label="Show more">
+                            +
+                        </span>
+                        <span class="group-aria-expanded:block hidden" aria-label="Show less">
+                            -
+                        </span>
+                    </button>
+                </h3>
+                <div class="flex hidden flex-col px-4 pb-6" id="options" role="region" aria-labelledby="options-label">
+                    <fieldset class="flex flex-wrap gap-6">
+                        <label for="no-bb">
+                            <input type="checkbox" id="no-bb" />
+                            <span>
+                                No &laquo;Battle Brawlers&raquo; Bakugan
+                            </span>
+                        </label>
+
+                        <label for="no-nv">
+                            <input type="checkbox" id="no-nv" />
+                            <span>
+                                No &laquo;New Vestroia&raquo; Bakugan
+                            </span>
+                        </label>
+
+                        <label for="no-gi">
+                            <input type="checkbox" id="no-gi" />
+                            <span>
+                                No &laquo;Gundalian Invaders&raquo; Bakugan
+                            </span>
+                        </label>
+
+                        <label for="no-ms">
+                            <input type="checkbox" id="no-ms" />
+                            <span>
+                                No &laquo;Mechtanium Surge&raquo; Bakugan
+                            </span>
+                        </label>
+
+                        <label for="no-bt">
+                            <input type="checkbox" id="no-bt" />
+                            <span>
+                                No &laquo;BakuTech&raquo; Bakugan
+                            </span>
+                        </label>
+                    </fieldset>
+                </div>
+            </section>
+
             <button
                 class="duration-500 mt-2 text-xl text-white bg-gradient-to-r from-[#800000] via-[#D71920] to-[#D71F25] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-2xl px-5 py-2.5 text-center mb-2"
                 type="submit"
@@ -54,6 +108,8 @@
         </form>
 
         <div id="resultBox" class="hidden bg-white rounded-3xl p-8 flex-col gap-8 justify-center items-center">
+            <p id="filters-display" class="-mb-6 text-center text-gray-800 hidden opacity-30"></p>
+
             <p class="font-bold text-xl">
                 Your Bakugan Partner is...
             </p>
